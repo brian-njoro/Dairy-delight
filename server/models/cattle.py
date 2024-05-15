@@ -10,4 +10,4 @@ class Cattle(db.Model):
     breed = db.Column(db.String(100))
     father = db.Column(db.Integer, db.ForeignKey('cattle.serial_number'))
     mother = db.Column(db.Integer, db.ForeignKey('cattle.serial_number'))
-    method_of_breeding = db.Column(db.String(100))
+    method_bred = db.Column(db.String(100))
