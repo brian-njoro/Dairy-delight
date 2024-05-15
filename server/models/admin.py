@@ -6,4 +6,6 @@ class Admin(db.Model):
     farm_name = db.Column(db.String(100))
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
+
+    # one to many relationship with cattle
     cattle = db.relationship('Cattle', backref='admin', lazy=True)
