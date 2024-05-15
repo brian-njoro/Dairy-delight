@@ -11,3 +11,11 @@ class Cattle(db.Model):
     father = db.Column(db.Integer, db.ForeignKey('cattle.serial_number'))
     mother = db.Column(db.Integer, db.ForeignKey('cattle.serial_number'))
     method_bred = db.Column(db.String(100))
+
+
+    #relationships
+    dehorning = db.relationship('Dehorning', uselist=False, backref='cattle')
+    treatments = db.relationship('Treatment', backref='cattle', lazy=True)
+    pest_controls = db.relationship('PestControl', backref='cattle', lazy=True)
+    periodic_treatments = db.relationship('PeriodicTreatment', backref='cattle', lazy=True)
+    vaccinations = db.relationship('Vaccination', backref='cattle', lazy=True)
