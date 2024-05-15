@@ -1,6 +1,6 @@
 from .config import db
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+# from flask import Flask
+# from flask_sqlalchemy import SQLAlchemy
 
 class Cattle(db.Model):
     serial_number = db.Column(db.Integer, primary_key=True)
