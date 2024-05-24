@@ -1,6 +1,4 @@
 from .config import db
-# from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
 
 class Cattle(db.Model):
     serial_number = db.Column(db.Integer, primary_key=True)
@@ -11,9 +9,10 @@ class Cattle(db.Model):
     father = db.Column(db.Integer, db.ForeignKey('cattle.serial_number'))
     mother = db.Column(db.Integer, db.ForeignKey('cattle.serial_number'))
     method_bred = db.Column(db.String(100))
+    admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False)
 
-
-    #relationships
+    # Relationships
+    admin = db.relationship('Admin', back_populates='cattle')
     dehorning = db.relationship('Dehorning', uselist=False, backref='cattle')
     treatments = db.relationship('Treatment', backref='cattle', lazy=True)
     pest_controls = db.relationship('PestControl', backref='cattle', lazy=True)
